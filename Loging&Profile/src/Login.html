@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Animated Login Form</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logos">
+            <p>BOOK WORMS</p>
+        </div>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="#">Shop now</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+        <img class="img3" src="pictures/logo.png">
+    </nav>
+
+    <div class="center">
+        <h1>Login</h1>
+        <form action="action.php?action=loginAction" method="POST">
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <div class="pass">Forgot Password?</div>
+            <center><input type="submit" name="login" value="Login"></center>
+            <div class="signup_link">
+                Not a member? <a href="#">Signup</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

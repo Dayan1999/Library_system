@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    .profile-info {
+      font-size: 18px;
+    }
+
+    .profile-info strong {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Profile</h1>
+
+  <div class="profile">
+    <?php
+      // Database configuration
+      $host = 'your_database_host';
+      $username = 'your_username';
+      $password = 'your_password';
+      $database = 'your_database_name';
+
+      // Establish a connection to the database
+      $connection = mysqli_connect($host, $username, $password, $database);
+      if (!$connection) {
+        die("Database connection failed: " . mysqli_connect_error());
+      }
+
+      // Retrieve user data from the database
+      $selectQuery = "SELECT * FROM userinf WHERE id = 1"; // Assuming user with ID 1
+      $result = mysqli_query($connection, $selectQuery);
+      if ($result && mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        echo '<img class="profile-img" src="' . $row['profile_picture'] . '" alt="Profile Picture">';
+        echo '<div class="profile-info">';
+        echo '<p><strong>Name:</strong> ' . $row['name'] . '</p>';
+        echo '<p><strong>Email:</strong> ' . $row['email'] . '</p>';
+        echo '<p><strong>Location:</strong> ' . $row['location'] . '</p>';
+        echo '<p><strong>Joined:</strong> ' . $row['created_at'] . '</p>';
+        // Add more user information here
+        echo '</div>';
+      }
+
+      // Close the database connection
+      mysqli_close($connection);
+    ?>
+  </div>
+</body>
+</html>
